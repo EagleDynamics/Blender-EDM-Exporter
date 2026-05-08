@@ -1,0 +1,2 @@
+
+SVN_REVISION = "$WCREV$"

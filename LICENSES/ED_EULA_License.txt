@@ -1,0 +1,86 @@
+END USER LICENSE AGREEMENT (EULA)
+
+This End User License Agreement ("Agreement") governs the use of the binary components (DLL files) included in this repository.
+
+By downloading, installing, or using these binaries, you agree to be bound by the terms of this Agreement.
+
+---
+
+1. GRANT OF LICENSE
+
+The Author grants you a limited, non-exclusive, non-transferable, non-sublicensable license to use the binary components solely for personal and non-commercial purposes within the Blender plugin for DCS World.
+
+---
+
+2. RESTRICTIONS
+
+You may NOT, directly or indirectly:
+
+* Reverse engineer, decompile, disassemble, or otherwise attempt to derive source code
+* Modify, adapt, translate, or create derivative works of the binaries
+* Bypass, disable, or interfere with any technical protection mechanisms
+* Use the binaries outside of the intended plugin environment
+* Use the binaries in any commercial product, service, or pipeline
+* Redistribute the binaries separately from this plugin
+
+---
+
+3. DISTRIBUTION
+
+You may redistribute the binaries only as part of the complete plugin package, provided that:
+
+* This Agreement is included
+* The binaries remain unmodified
+* No commercial use is involved
+
+---
+
+4. INTELLECTUAL PROPERTY
+
+All rights, title, and interest in and to the binaries remain the exclusive property of the Author.
+
+This Agreement does not grant you any ownership rights.
+
+---
+
+5. TERMINATION
+
+This Agreement is effective until terminated.
+
+It will automatically terminate if you fail to comply with any of its terms. Upon termination, you must cease all use of the binaries and delete all copies.
+
+---
+
+6. DISCLAIMER OF WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+---
+
+7. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THE SOFTWARE.
+
+---
+
+8. GOVERNING LAW
+
+This Agreement shall be governed by and construed in accordance with applicable international copyright laws.
+
+---
+
+9. CONTACT
+
+For commercial licensing or other inquiries, please contact:
+
+[support@digitalcombatsimulator.com]
+
+---
+
+10. THIRD-PARTY CONTEXT
+
+This plugin is intended for use with DCS World.
+
+This plugin was developed at Eagle Dynamics and is released with its full approval.
+
+All trademarks are the property of their respective owners.
