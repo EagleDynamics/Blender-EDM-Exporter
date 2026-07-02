@@ -93,6 +93,9 @@ class SNode:
                 except ValueError:
                     # It seems reroute node takes default value from connected nodes.
                     pass
+                except TypeError:
+                    # It seems reroute node takes default value from connected nodes.
+                    pass
         
         return node
     
