@@ -12,7 +12,7 @@ Blender plugin for exporting 3D models into the EDM format used in DCS World. En
 > Eagle Dynamics would especially like to thank the following people:
 >
 > - Lead developer [Evgeny Podjachev](https://github.com/madevgeny)
-> - Senior developer [Alena Vasileva](https://github.com/baa-lamb)
+> - Developer [Alena Vasileva](https://github.com/baa-lamb)
 > - 3D designer [Artur Manannikov](https://www.artstation.com/arthurchik)
 > - Project manager [Timothy Misharov](https://github.com/Azralar)
 
