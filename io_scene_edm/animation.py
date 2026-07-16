@@ -104,7 +104,7 @@ def get_animation_type(obj: Object, data_path_modifier=lambda x: x):
 # Bones add thier name to data_path, so we add argument process and return data_path whitout bone name.
 # allowed_args == None means any args are allowed
 # Returns tuple (action, arg) on success or (None, -1).
-def has_transform_anim(obj: Object, data_path_modifier=lambda x: x, allowed_args=None) -> bool:
+def has_transform_anim(obj: Object, data_path_modifier=lambda x: x, allowed_args=None):
     obj_ad = obj.animation_data
     if not obj_ad or not obj_ad.action:
         return (None, -1)

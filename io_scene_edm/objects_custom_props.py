@@ -1,6 +1,8 @@
 from bpy.types import PropertyGroup, Object
 from bpy.props import StringProperty, BoolProperty, IntProperty, EnumProperty, FloatVectorProperty, FloatProperty
 
+from enums import EDMPropsSpecialTypeStr
+
 class EDM_PropsEnumValues(PropertyGroup):
     bl_idname = "edm.PropsEnumValues"
 
@@ -15,18 +17,18 @@ class EDMPropsGroup(PropertyGroup):
         name = "Obj.type",
         description = "Choose the type of analysis this material do",
         items = [
-            ('UNKNOWN_TYPE',            'unknown_type',             "Unspecified object type: geometry/animation empty",                    0),
-            ('USER_BOX',                'user_box',                 "Box covering only geometry. Is used for backlight",                    1),
-            ('BOUNDING_BOX',            'bounding_box',             "Box covering geometry and all animations. Is used for camera cutoff",  2),
-            ('COLLISION_LINE',          'collision_line',           "Geometry edge used for collision",                                     3),
-            ('COLLISION_SHELL',         'collision_shell',          "Geometry mesh used for collision",                                     4),
-            ('CONNECTOR',               'connector',                "Type Connector",                                                       5),
-            ('FAKE_LIGHT',              'fake_light',               "Type BANO",                                                            6),
-            ('LIGHT_BOX',               'light_box',                "Box - Limiter for light source",                                       7),
-            ('NUMBER_TYPE',             'number_type',              "Dynamic digits for bort number",                                       8),
-            ('SKIN_BOX',                'skin_box',                 "Box covering bones geometry",                                          9),
-            ('WATER_MASK',              'water_mask',               "Plane to cover water in boats",                                        10)
-
+            (EDMPropsSpecialTypeStr.UNKNOWN_TYPE,       'unknown_type',      "Unspecified object type: geometry/animation empty",                    0),
+            (EDMPropsSpecialTypeStr.USER_BOX,           'user_box',          "Box covering only geometry. Is used for backlight",                    1),
+            (EDMPropsSpecialTypeStr.BOUNDING_BOX,       'bounding_box',      "Box covering geometry and all animations. Is used for camera cutoff",  2),
+            (EDMPropsSpecialTypeStr.COLLISION_LINE,     'collision_line',    "Geometry edge used for collision",                                     3),
+            (EDMPropsSpecialTypeStr.COLLISION_SHELL,    'collision_shell',   "Geometry mesh used for collision",                                     4),
+            (EDMPropsSpecialTypeStr.CONNECTOR,          'connector',         "Type Connector",                                                       5),
+            (EDMPropsSpecialTypeStr.FAKE_LIGHT,         'fake_light',        "Type BANO",                                                            6),
+            (EDMPropsSpecialTypeStr.LIGHT_BOX,          'light_box',         "Box - Limiter for light source",                                       7),
+            (EDMPropsSpecialTypeStr.NUMBER_TYPE,        'number_type',       "Dynamic digits for bort number",                                       8),
+            (EDMPropsSpecialTypeStr.SKIN_BOX,           'skin_box',          "Box covering bones geometry",                                          9),
+            (EDMPropsSpecialTypeStr.WATER_MASK,         'water_mask',        "Plane to cover water in boats",                                        10),
+            (EDMPropsSpecialTypeStr.TRANSPARENT_PIVOT,  'transparent_pivot', "Empty object setting sorting helper for transparent objects",          11),
         ],
         default = 'UNKNOWN_TYPE'
     ) # type: ignore

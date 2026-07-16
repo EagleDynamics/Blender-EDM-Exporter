@@ -622,6 +622,9 @@ class PBRNode(IRenderNode):
 	def getBlock(self, *args, **kwargs):
 		pass
 
+	def addTransparentPivot(self, *args, **kwargs):
+		pass
+
 class GlassNode(PBRNode):
 	def __init__(self, *args, **kwargs):
 		pass

@@ -20,11 +20,11 @@ from enums import ObjectTypeEnum, BlockEnum
 from export_lights import export_light, is_light
 from export_connectors import export_connector, is_connector
 from export_water_mask import export_water_mask, is_water_mask
+from export_transparent_pivot import is_transparent_pivot, export_transparent_pivot
 from export_collision import (
     create_segments_node, 
     is_segment, 
     is_shell, 
-    get_collision_name,
     export_shell
 )
 
@@ -91,13 +91,13 @@ class CollectionWalker:
         del self.skins
 
     # Walks through children of obj.
-    def enum_children(self, full_name, obj, node, current_armature, skin_box = None):
+    def enum_children(self, full_name, obj, node, current_armature, skin_box, parent_edm_render_node):
         if skin_box and len(obj.children) > 1:
             log.fatal(f'SKIN_BOX can not have more then one child, but {full_name} has {len(obj.children)} children.')
             return None
 
         for o in obj.children:
-            self.enum_object(full_name, o, node, current_armature, skin_box)
+            self.enum_object(full_name, o, node, current_armature, skin_box, parent_edm_render_node)
 
     def export_aabb(self, object: bpy.types.Object):
         aa_bb = get_aa_bb(object)
@@ -185,7 +185,7 @@ class CollectionWalker:
 
         return (nLights, control_node)
     
-    def enum_object(self, parent_object_path: str, obj: ObjectNodeCustomType, edm_parent_node: pyedm.Node, current_armature: bpy.types.Armature, skin_box):
+    def enum_object(self, parent_object_path: str, obj: ObjectNodeCustomType, edm_parent_node: pyedm.Node, current_armature: bpy.types.Armature, skin_box, parent_edm_render_node):
         logger.LOG_CTX.obj = obj
         try:
             group_node_names = find_duplicated_node_groups()
@@ -204,11 +204,11 @@ class CollectionWalker:
             elif type(obj) is LodLeaf:
                 edm_node = edm_parent_node.addChild(pyedm.Node(obj.name))
             if edm_node:
-                self.enum_children(full_name, obj, edm_node, current_armature)
+                self.enum_children(full_name, obj, edm_node, current_armature, skin_box, parent_edm_render_node)
                 return
 
             if not obj.visible:
-                self.enum_children(full_name, obj, edm_parent_node, current_armature)
+                self.enum_children(full_name, obj, edm_parent_node, current_armature, skin_box, parent_edm_render_node)
                 return
 
             o: bpy.types.Object = obj.obj
@@ -255,9 +255,11 @@ class CollectionWalker:
                 log.info(f"{full_name} as {o.type}. Control node: {edm_node.getName()}. N triangles: {nLights}.")
             elif is_number_node(o):
                 nTriangles, edm_node, number_node = self.export_mesh(o, edm_node, None)
+                parent_edm_render_node = number_node
                 log.info(f"{full_name} as {o.type}. Control node: {edm_node.getName()}. N triangles: {nTriangles}.")
             elif is_mesh(o):
                 nTriangles, edm_node, edm_render_node = self.export_mesh(o, edm_node, current_armature)
+                parent_edm_render_node = edm_render_node
                 if edm_render_node and isinstance(edm_render_node, pyedm.PBRNode):
                     boneBlock = edm_render_node.getBlock(BlockEnum.BT_Bone)
                     if sb and boneBlock:
@@ -267,6 +269,8 @@ class CollectionWalker:
             elif is_water_mask(o):
                 nTriangles, edm_node = self.export_water_mask(o, edm_node)
                 log.info(f"{full_name} as {o.type}. Control node: {edm_node.getName()}. N triangles: {nTriangles}.")
+            elif is_transparent_pivot(o):
+                export_transparent_pivot(o, parent_edm_render_node)
             elif is_shell(o):
                 if get_armature_from_modifiers(o.modifiers):
                     log.fatal(f"Shell {obj.name} has bones.") # why?
@@ -282,13 +286,13 @@ class CollectionWalker:
                 log.info(f"{full_name} as {o.type}")
             else:
                 log.info(f"{full_name} as {o.type}")
-            self.enum_children(full_name, obj, edm_node, current_armature, sb)
+            self.enum_children(full_name, obj, edm_node, current_armature, sb, parent_edm_render_node)
 
         except EdmException as e:
             exc_type, exc_value, exc_traceback = sys.exc_info()
             res = ''.join(traceback.format_tb(exc_traceback, limit=1))
             res += ''.join(traceback.format_exception(exc_type, exc_value, exc_traceback, limit=2))
-            log.error(str(e), res)
+            log.error(str(e) + res)
             
     def build_skin(self):
         for skin in self.skins:
@@ -312,7 +316,7 @@ class CollectionWalker:
         self.profile.enable()
         root = pyedm.Transform('', ROOT_TRANSFORM_MATRIX)
         self.model.getRootTransform().addChild(root)
-        self.enum_object('', self.obj_tree.obj_tree, root, None, None)
+        self.enum_object('', self.obj_tree.obj_tree, root, None, None, None)
         self.build_skin()
         self.profile.disable()
 

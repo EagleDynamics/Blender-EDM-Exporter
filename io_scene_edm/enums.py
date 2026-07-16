@@ -77,6 +77,7 @@ class EDMPropsSpecialTypeStr(str, Enum):
     NUMBER_TYPE         = 'NUMBER_TYPE'
     SKIN_BOX            = 'SKIN_BOX'
     WATER_MASK          = 'WATER_MASK'
+    TRANSPARENT_PIVOT   = 'TRANSPARENT_PIVOT'
 
 class EDMCustomEmissiveTypeInt(int, Enum):
     NONE                                = 0
@@ -86,19 +87,6 @@ class EDMCustomEmissiveTypeInt(int, Enum):
     ADDITIVE_SELF_ILLUMINATION          = 4
     ADDITIVE_SELF_COLOR_ILLUMINATION    = 5
     ADDITIVE_SELF_TEX_ILLUMINATION      = 6
-
-class EDMPropsSpecialTypeInt(int, Enum):
-    UNKNOWN_TYPE        = 0
-    USER_BOX            = 1
-    BOUNDING_BOX        = 2
-    COLLISION_LINE      = 3
-    COLLISION_SHELL     = 4
-    CONNECTOR           = 5
-    FAKE_LIGHT          = 6
-    LIGHT_BOX           = 7
-    NUMBER_TYPE         = 8
-    SKIN_BOX            = 9
-    WATER_MASK          = 10
 
 class EDMShadowCaster(int, Enum):
 	YES             = 0
