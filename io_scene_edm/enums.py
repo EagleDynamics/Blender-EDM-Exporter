@@ -151,7 +151,7 @@ class NodeSocketInGlassEnum(str, Enum):
     ROUGH_METAL     = 'RoughMet (Non-Color)'
     LIGHTMAP        = 'LightMap (Non-Color)'
     LIGHTMAP_VALUE  = 'LightMap Value'
-    NORMAL          = 'Normal (Non-Color)'
+	NORMAL 			= 'Normal/Scratches (Non-Color)'
     NORMAL_ENCODING = 'Normal Encoding DirectX/OpenGL'
     FILTER_COLOR    = 'Filter Color'
     FLIR            = 'Flir'
