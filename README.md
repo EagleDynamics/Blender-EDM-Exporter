@@ -36,7 +36,7 @@ Blender plugin for exporting 3D models into the EDM format used in DCS World. En
 
 ## How to Install and Remove the Add-on
 
-Download from:   https://files.eagle.ru/mods/edm_blender_plugins/
+Download from:   [https://files.eagle.ru/mods/edm_blender_plugins/](https://mods.eagle.ru/blender_plugin/index.html)
 
 Or go to the Releases section of the https://github.com/EagleDynamics. Then download the zip file **edm_tools_blender_plugin.zip** of the latest release.
 
