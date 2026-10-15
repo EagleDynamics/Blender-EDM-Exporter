@@ -100,6 +100,6 @@ It allows you to: assign **argument numbers** to animations, specify **object ty
 
 ## Documentation
 
-If you want to learn how to use this add-on you can refer to the documentation page here : [Blender plugin tutorial (PDF)](MANUAL/tutorial-for-the-blender-plugin.pdf)
+If you want to learn how to use this add-on you can refer to the documentation page here : [Blender plugin tutorial (PDF)](MANUAL/EDM_Blender_Plugin_Manual.pdf)
 
 ---
